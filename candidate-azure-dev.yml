@@ -1,0 +1,56 @@
+server:
+  port: ${DEV-CANDIDATE-SERVICE-PORT:8080}
+
+spring:
+  cloud:
+    config:
+      enabled: false
+    gcp:
+      core:
+        enabled: false
+      sql:
+        enabled: false
+      storage:
+        enabled: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+    azure:
+      keyvault:
+        secret:
+          enabled: true
+          property-source-enabled: true
+          property-sources[0]:
+            endpoint: https://contosokv.vault.azure.net/
+            profile:
+              tenant-id: <your tenant ID>
+            credential:
+              client-id: <your client ID>
+              client-secret: <your client key>
+
+      storage:
+        blob:
+          enabled: true
+          account-name: ${CANDIDATE-SERVICE-BLOB-STORAGE-NAME}
+          account-key: ${CANDIDATE-SERVICE-BLOB-STORAGE-KEY}
+
+  datasource:
+    url: jdbc:postgresql://test:5432/${DEV-CANDIDATE-SERVICE-DATABASE-NAME}?sslmode=require
+    username: ${DEV-CANDIDATE-SERVICE-POSTGRES-LOGIN-NAME}
+    password: ${DEV-CANDIDATE-SERVICE-POSTGRES-LOGIN-PASSWORD}
+
+io.enfuse.internal:
+  azure:
+    container: ${DEV-CANDIDATE-SERVICE-AZURE-BLOB-CONTAINER-NAME}
+  candidate:
+    security:
+      google:
+        jwt-claims:
+          issuers:
+            - https://accounts.google.com
+            - accounts.google.com
+          audience: 175350329595-ov2d9sikidnelpauuv1gh89vbi5gu5k4.apps.googleusercontent.com
+          hosted-domain: enfuse.io
+
