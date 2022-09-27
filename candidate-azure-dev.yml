@@ -22,13 +22,6 @@ spring:
         secret:
           enabled: true
           property-source-enabled: true
-          property-sources[0]:
-            endpoint: https://contosokv.vault.azure.net/
-            profile:
-              tenant-id: <your tenant ID>
-            credential:
-              client-id: <your client ID>
-              client-secret: <your client key>
 
       storage:
         blob:
@@ -53,4 +46,6 @@ io.enfuse.internal:
             - accounts.google.com
           audience: 175350329595-ov2d9sikidnelpauuv1gh89vbi5gu5k4.apps.googleusercontent.com
           hosted-domain: enfuse.io
+
+
 
