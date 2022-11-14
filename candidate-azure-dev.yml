@@ -44,7 +44,7 @@ io.enfuse.internal:
           issuers:
             - https://accounts.google.com
             - accounts.google.com
-          audience: 175350329595-ov2d9sikidnelpauuv1gh89vbi5gu5k4.apps.googleusercontent.com
+          audience: http://175350329595-cvnaupnt6kplk7nv4hankaathct099b7.apps.googleusercontent.com
           hosted-domain: enfuse.io
 
 
